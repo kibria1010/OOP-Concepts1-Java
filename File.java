@@ -41,8 +41,8 @@ public class File {
         }
     }
     
-    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     public static void writingToFile() {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         try (PrintWriter writer = new PrintWriter(new FileWriter("example.txt", true))) { // 'true' enables appending
             String line;
             while (!(line = in.readLine()).equals("0")) {
@@ -51,6 +51,8 @@ public class File {
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+        } finally {
+            
         }
     }
 }
