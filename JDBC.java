@@ -44,9 +44,10 @@ public class JDBC {
                 System.out.println(resultSet.getString("dept_name"));
                 System.out.println(resultSet.getInt("budget"));
             }
-
-            resultSet.close();
+            
             statement.close();
+            statement1.close();
+            resultSet.close();
             connection.close();
 
         } catch (Exception e) {
