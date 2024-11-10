@@ -1,6 +1,7 @@
 package jdbcexample;
 /*
-    JDBC (Java Database Connectivity) is an API in Java that allows applications to interact with relational databases. It provides a way to connect to a database, execute SQL queries, retrieve results, and manage transactions. 
+    JDBC (Java Database Connectivity) is an API in Java that allows applications to interact with relational databases. 
+    It provides a way to connect to a database, execute SQL queries, retrieve results, and manage transactions. 
 */
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,9 +22,9 @@ public class JDBC {
             String sql = "INSERT INTO `department`(`dept_name`, `building`, `budget`) VALUES (?,?,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             
-            statement.setString(1, "aaaaa");
-            statement.setString(2, "fgffffhhgf");
-            statement.setString(3, "10");
+            statement.setString(1, "CSE");
+            statement.setString(2, "01");
+            statement.setString(3, "100");
 
             int affectedRows = statement.executeUpdate();
 
