@@ -4,6 +4,34 @@ import java.io.*;
 
 public class ExceptionHandling {
     
+    public static void main(String[] args) {
+        //-------------------------Exception must be thrown or catch; otherwise the program terminates unexpectedly.
+        try {
+            readFile("example.txt");             // Checked exception
+            int a = 10/0;                        // UnChecked exception
+        } catch (IOException e) {
+            System.out.println("File not found or could not be read.");
+        } catch (ArithmeticException e) {
+            System.out.println("Num cannot div by zero.");
+        } finally {
+            System.out.println("Closing file operations.");
+        }
+        
+        //-------------------------Exception Propagation
+        try {
+            checkAge(15);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        //-------------------------User_Defined_Exception
+        try {
+            CheckAge(15);
+        } catch (User_Defined_Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
     // Throws IOException if the file cannot be read
     public static void readFile(String fileName) throws IOException {
         FileReader fileReader = new FileReader(fileName);
@@ -18,43 +46,25 @@ public class ExceptionHandling {
     }
     
     public static void checkAge(int age) {
+        check(age);
+    }
+
+    public static void check(int age) {
         if (age < 18) {
             throw new IllegalArgumentException("Age must be 18 or older.");
         }
     }
     
-    public static void main(String[] args) {
-        try {
-            readFile("example.txt");
-        } catch (IOException e) {
-            System.out.println("File not found or could not be read.");
-        } finally {
-            System.out.println("Closing file operations.");
-        }
-        
-        try {
-            checkAge(15);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        
-        try {
-            CheckAge(15);
-        } catch (InvalidAgeException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-    
-    public static void CheckAge(int age) throws InvalidAgeException {
+    public static void CheckAge(int age) throws User_Defined_Exception   {
         if (age < 18) {
-            throw new InvalidAgeException("Age must be 18 or older.");
+            throw new User_Defined_Exception("Age must be 18 or older.");
         }
     }
 }
 
 
-class InvalidAgeException extends Exception {
-    public InvalidAgeException(String message) {
+class  User_Defined_Exception extends Exception {
+    public User_Defined_Exception(String message) {
         super(message);
     }
 }
