@@ -1,10 +1,13 @@
 package oop;
 
-/**
- *
- * @author Md Golam Kibria
- */
+/*
+    In Java, a thread is the smallest unit of execution within a process. 
+    A process can have multiple threads running concurrently, allowing tasks to be performed in parallel. 
+    Java provides built-in support for multithreading, enabling developers to write programs that can perform multiple tasks at the same time.
+*/
+
 public class Threads {
+    
     public static void main(String[] args) throws Exception{
         
         MyThread thread = new MyThread();
@@ -17,6 +20,7 @@ public class Threads {
         thread2.join();
         System.out.println("------------");
         
+        //-------------------------MultiThreadExample
         Thread t1 = new Thread(new MultiThreadExample("Thread 1"));
         Thread t2 = new Thread(new MultiThreadExample("Thread 2"));
         t1.start();
@@ -25,6 +29,7 @@ public class Threads {
         t2.join();
         System.out.println("------------");
         
+        //-------------------------Thread Synchronization
         Counter counter = new Counter();
 
         Runnable task = () -> {
@@ -45,6 +50,7 @@ public class Threads {
         System.out.println("Final Count: " + counter.getCount()); // Output should be 2000 if synchronized correctly
         System.out.println("------------");
         
+        //-------------------------Daemon Thread
         Thread daemonThread = new Thread(() -> {
             while (true) {
                 System.out.println("Daemon thread running...");
@@ -64,8 +70,10 @@ public class Threads {
 }
 
 /*
-To create a thread by extending the Thread class, define a subclass that overrides the run() method. This method contains the code that will be executed by the thread when it is started.
+    To create a thread by extending the Thread class, define a subclass that overrides the run() method. 
+    This method contains the code that will be executed by the thread when it is started.
 */
+//--------------------------------------------------User-Defined Thread
 class MyThread extends Thread {
     @Override
     public void run() {
@@ -80,6 +88,7 @@ class MyThread extends Thread {
     }
 }
 
+//--------------------------------------------------User-Defined Thread
 class MyRunnable implements Runnable {
     @Override
     public void run() {
@@ -94,6 +103,7 @@ class MyRunnable implements Runnable {
     }
 }
 
+//--------------------------------------------------User-Defined MultiThread
 class MultiThreadExample implements Runnable {
     private String name;
 
@@ -114,6 +124,7 @@ class MultiThreadExample implements Runnable {
     }
 }
 
+//--------------------------------------------------Thread Synchronization
 class Counter {
     private int count = 0;
 
@@ -132,10 +143,6 @@ class Counter {
 
 
 /*
-In Java, a thread is the smallest unit of execution within a process. 
-A process can have multiple threads running concurrently, allowing tasks to be performed in parallel. 
-Java provides built-in support for multithreading, enabling developers to write programs that can perform multiple tasks at the same time.
-
 Basics of Threads in Java
 A Java thread is an instance of the Thread class or an implementation of the Runnable interface. 
 Each thread has its own stack, local variables, and program counter, but it shares the heap memory with other threads in the same process. 
