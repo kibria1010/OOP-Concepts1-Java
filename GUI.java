@@ -17,6 +17,7 @@ public class GUI {
         //new Layout().GridLayoutPractice();
         //new Layout().CardLayout();
         //new Layout().GridBagLayoutPractice();
+        new Components();
     }
 }
 
@@ -268,6 +269,126 @@ class Layout {
         gbc.gridwidth = 3;
         frame.add(btn3, gbc);
         
+        frame.setVisible(true);
+    }
+}
+
+//-------------------Components of AWT
+class Components {
+
+    public Components() {
+        test();
+    }
+    
+    public void test() {
+        // Create the main frame
+        Frame frame = new Frame("AWT Components in Separate Panels");
+        frame.setSize(400, 400);
+        frame.setLayout(new GridLayout(7, 1)); // 6 rows, 1 column
+
+        // Panel for Button
+        Panel buttonPanel = new Panel();
+        Button button = new Button("Click Me");
+        button.addActionListener(e -> System.out.println("Button clicked!"));
+        buttonPanel.add(button);
+
+        // Panel for Label
+        Panel labelPanel = new Panel();
+        Label label = new Label("Hello, AWT!");
+        labelPanel.add(label);
+
+        // Panel for TextField
+        Panel textFieldPanel = new Panel();
+        TextField textField = new TextField(20);
+        textFieldPanel.add(textField);
+
+        // Panel for TextArea
+        Panel textAreaPanel = new Panel();
+        TextArea textArea = new TextArea(3, 20);
+        textAreaPanel.add(textArea);
+
+        // Panel for Checkbox
+        Panel checkBoxPanel = new Panel();
+        Checkbox checkBox = new Checkbox("Accept Terms and Conditions");
+        checkBoxPanel.add(checkBox);
+
+        // Panel for Choice (Drop-Down List)
+        Panel choicePanel = new Panel();
+        Choice choice = new Choice();
+        choice.add("Option 1");
+        choice.add("Option 2");
+        choice.add("Option 3");
+        choicePanel.add(choice);
+
+        // Add all panels to the frame
+        frame.add(buttonPanel);
+        frame.add(labelPanel);
+        frame.add(textFieldPanel);
+        frame.add(textAreaPanel);
+        frame.add(checkBoxPanel);
+        frame.add(choicePanel);
+        
+        // Create a MenuBar
+        MenuBar menuBar = new MenuBar();
+
+        // Create a Menu
+        Menu fileMenu = new Menu("File");
+        
+        // Create MenuItems for the File menu
+        MenuItem openItem = new MenuItem("Open");
+        MenuItem saveItem = new MenuItem("Save");
+        MenuItem exitItem = new MenuItem("Exit");
+
+        // Add MenuItems to the File menu
+        fileMenu.add(openItem);
+        fileMenu.add(saveItem);
+        fileMenu.addSeparator(); // Adds a separator line
+        fileMenu.add(exitItem);
+
+        // Add action listeners for menu items
+        openItem.addActionListener(e -> System.out.println("Open selected"));
+        saveItem.addActionListener(e -> System.out.println("Save selected"));
+        exitItem.addActionListener(e -> frame.dispose());
+
+        // Add File menu to the MenuBar
+        menuBar.add(fileMenu);
+
+        // Set the frame's MenuBar
+        frame.setMenuBar(menuBar);
+
+        // Set the frame's MenuBar
+        frame.setMenuBar(menuBar);
+        
+        // Create a Dialog
+        Dialog dialog = new Dialog(frame, "Dialog Example", true);
+        dialog.setSize(300, 200);
+        dialog.setLayout(new FlowLayout());
+
+        // Add a Label and a Close button to the Dialog
+        Label dialogLabel = new Label("This is a dialog box!");
+        Button closeDialogButton = new Button("Close");
+        dialog.add(dialogLabel);
+        dialog.add(closeDialogButton);
+
+        // Close button action for the dialog
+        closeDialogButton.addActionListener(e -> dialog.setVisible(false));
+
+        // Button to open the dialog
+        Button openDialogButton = new Button("Open Dialog");
+        openDialogButton.addActionListener(e -> dialog.setVisible(true));
+        
+        Panel dialogPanel = new Panel();
+        dialogPanel.add(openDialogButton);
+        frame.add(dialogPanel);
+
+        // Add window listener to close the frame
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                frame.dispose();
+            }
+        });
+
+        // Set frame visibility
         frame.setVisible(true);
     }
 }
