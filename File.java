@@ -15,7 +15,7 @@ public class File {
         writingToFile();
         readingFromFileUtil();
         appendToFileWithoutBuildingFunction();
-        findSumAndShowFromAFile();
+        calculateSumAndShowFromAFile();
     }
 
     public static void readingFromFile() {
@@ -89,7 +89,7 @@ public class File {
         }
     }
 
-    private static void findSumAndShowFromAFile() {
+    private static void calculateSumAndShowFromAFile() {
         int sum=0;
         try (BufferedReader reader = new BufferedReader(new FileReader("input.txt"))) {
             String line;
